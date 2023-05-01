@@ -3,3 +3,6 @@ https://ordo.tistory.com/103 - 회귀 분석 사이트
 https://brunch.co.kr/@data/10 데이터 사이트
 
 https://www.insilicogen.com/blog/361 탐색적 데이터 분석
+
+셀레니움으로 주가 크롤링하기 
+주가 - 코스피, 뉴욕, s&p, 나스닥, 다우존스 -> 네이버에서 크롤링
