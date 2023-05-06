@@ -9,4 +9,6 @@ for i in range(1,2):
             value= data.json()   
             kospi = value['result']['siseList']
             df=pd.DataFrame(kospi)
+            df=df[['cd','dt','ov','ncv','cv','cr']] #특정 열 선택
+            df = df.rename(columns={'cd':'code',"dt":"date",'ov':'open','ncv':'close','cv':'diff','cr':'rate'}) #열 이름 변경
 print(df)
