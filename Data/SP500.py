@@ -25,4 +25,4 @@ for i in range(1,520):
             df=pd.DataFrame({"code":symb, "date":xymd,"open":open,"close":close,
                                   "diff":diff,"rate":rate})
 print(df)
-print(df.isna().sum())
+print(df.isna().sum()) 
