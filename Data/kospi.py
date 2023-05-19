@@ -15,5 +15,6 @@ for i in range(1,27):
             Data=pd.concat([Data,df])
             #index를 reset해주고, 인덱스 열을 버린다.
             Data=Data.reset_index(drop=True)
-print(Data)
-print(Data.isna().sum())
+Data.to_csv("KOSPI.csv",index=False)
+#print(Data)
+#print(Data.isna().sum())
