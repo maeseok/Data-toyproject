@@ -25,6 +25,6 @@ for i in range(1,520):
             df=pd.DataFrame({"code":symb, "date":xymd,"open":open,"close":close,
                                   "diff":diff,"rate":rate})
 
-df.to_csv("SP500.csv",index=False)
-#print(df)
+#df.to_csv("SP500.csv",index=False)
+print(df)
 #print(df.isna().sum()) 

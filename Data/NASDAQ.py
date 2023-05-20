@@ -24,6 +24,6 @@ for i in range(1,520):
                 rate.append(value[j]["rate"])
             df=pd.DataFrame({"code":symb, "date":xymd,"open":open,"close":close,
                                   "diff":diff,"rate":rate})
-df.to_csv("NASDAQ.csv",index=False)
-#print(df)
+#df.to_csv("NASDAQ.csv",index=False)
+print(df)
 #print(df.isna().sum())
