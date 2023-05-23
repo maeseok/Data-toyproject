@@ -9,4 +9,5 @@ df= pd.DataFrame({'Date':KS['date'],'SP':SP['close'],'KOSPI':KS['close'],
 #inplace를 통해 기존의 인덱스(숫자)를 대체
 df.set_index('Date',inplace=True)
 df=df.dropna()
+df=df.corr()
 print(df)
