@@ -12,3 +12,4 @@ df=df.dropna()
 df=df.corr()
 print(df)
 
+
