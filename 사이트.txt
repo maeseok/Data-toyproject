@@ -7,6 +7,8 @@ https://www.insilicogen.com/blog/361 탐색적 데이터 분석
 https://wikidocs.net/172909 주가 데이터 분석
 
 https://wikidocs.net/16561 데이터 분석 전체적인 흐름
+
+https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=liberty264&logNo=221124976436
 ------------------------------------------------------
 
 
@@ -24,3 +26,5 @@ EX) 20090907 나스닥X, S&P500 O , 다른 사이트에는 둘다없었음-> 이
 미국증시 데이터 수집 시간이 오래걸림 -> 코드 조금 수정할지 고민 -> 어차피 json 형태라 concat 안 될듯 - 결론 : 그대로 두기(따로 저장해서 쓰면 됨)
 
 3. 데이터 시각화 단계(0519~)
+선형회귀, 상관계수 분석 (0528)
+회귀방정식을 이용한 예측치 확인
