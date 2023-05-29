@@ -49,3 +49,4 @@ LinearReg(KNS,"NS")
 
 #df= pd.DataFrame({'Date':KS['date'],'SP':SP['close'],'KOSPI':KS['close'],
 #                  'DW':DW['close'],'NS':NS['close']})
+
