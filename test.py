@@ -1,4 +1,4 @@
-# gradient descent method
+# gradient descent method (인공지능수학 - 경사하강법)
 import numpy as np
 # objective function and the slopes
 def f(x,y):
@@ -9,6 +9,7 @@ def fy(x,y):
     return -2*x+8*y
 # initialization of variables 
 x0,y0=1.0, 2.0
+#입실론과 t의 값 변화에 따른 iter의 변화 주의할 것
 eps = 1e-6
 t=0.1
 # make lists 
