@@ -38,15 +38,15 @@ KS=readData("KS")
 KSP = madeData("SP")
 KDW = madeData("DW")
 KNS = madeData("NS")
+#선형회귀 및 그래프 출력
 LinearReg(KSP,"SP")
 LinearReg(KDW,"DW")
 LinearReg(KNS,"NS")
-#KSP.corr()
-#KDW.corr()
-#KNS.corr()
-
+KSP.corr()
+KDW.corr()
+KNS.corr()
+print(KS)
 
 
 #df= pd.DataFrame({'Date':KS['date'],'SP':SP['close'],'KOSPI':KS['close'],
 #                  'DW':DW['close'],'NS':NS['close']})
-
