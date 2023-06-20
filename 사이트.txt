@@ -38,8 +38,9 @@ http://www.incodom.kr/Regression - 선형 회귀는 많은 조건을 만족해�
 
 4. 여러 논문 읽어보며, 어떠한 분석이 필요한지 정리해보기 - 유명한 논문 위주로(0618~)
 https://www.dbpia.co.kr/ 논문 사이트
-
-
+http://www.riss.kr/search/detail/DetailView.do?p_mat_type=be54d9b8bc7cdb09&control_no=4c2d2c654fae0c31&keyword=%EC%BD%94%EC%8A%A4%ED%94%BC - 1번
+-> 상관계수 -> 가격,변동성 전이효과 -> 집중현상 -> 전이효과의 비대칭성
+-> LISREL, 공적분 검정, ECM, VAR, 그랜저인과검정, 교차상관관계분석 등
 
 (1. 데이터 분석은 도메인 미리 정하지 말고 파이썬으로 여러 도메인 학습하기
  2. 주식시장의 ai 한계는 존재, 다른 분야가 ai가 훨신 실용성 있고 커지기 쉽다.
