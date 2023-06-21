@@ -42,6 +42,15 @@ http://www.riss.kr/search/detail/DetailView.do?p_mat_type=be54d9b8bc7cdb09&contr
 -> 상관계수 -> 가격,변동성 전이효과 -> 집중현상 -> 전이효과의 비대칭성
 -> LISREL, 공적분 검정, ECM, VAR, 그랜저인과검정, 교차상관관계분석 등
 
+https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001648619
+->회귀 모형 사용
+->국내 증시와 미 기준금리 인상은 관계가 있다. 
+->지금까지는 그래왔지만 사람들이 학습하여 다른 태도를 보인다면 
+  국내 증시의 흐름이 달라질 수도 있다.
+
+https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002931416
+-> 코로나19 전후 주식시장 상호의존성 - var 모형 사용
+
 (1. 데이터 분석은 도메인 미리 정하지 말고 파이썬으로 여러 도메인 학습하기
  2. 주식시장의 ai 한계는 존재, 다른 분야가 ai가 훨신 실용성 있고 커지기 쉽다.
  3. 하지만 실용성 없어도, 꾸준한 관심이 있다면 계속 규모가 커질수도
