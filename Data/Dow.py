@@ -11,11 +11,11 @@ close=[]
 diff=[]
 rate=[]
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62'}
-for i in range(1,520):
+for i in range(1,261):
             url="https://finance.naver.com/world/worldDayListJson.naver?symbol=DJI@DJI&fdtc=0&page="+str(i)
             data = requests.get(url,headers=headers)
             value= data.json()         
-            for j in range(len(value[0])):
+            for j in range(len(value[0])+1):
                 symb.append(value[j]["symb"])
                 xymd.append(value[j]["xymd"])
                 open.append(value[j]["open"])
@@ -24,6 +24,6 @@ for i in range(1,520):
                 rate.append(value[j]["rate"])
             df=pd.DataFrame({"code":symb, "date":xymd,"open":open,"close":close,
                                   "diff":diff,"rate":rate})
-df.to_csv("DOW.csv",index=False)
+df.to_csv("DW.csv",index=False)
 #print(df)
 #print(df.isna().sum())
