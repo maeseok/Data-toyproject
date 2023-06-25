@@ -57,6 +57,7 @@ https://songseungwon.tistory.com/133
 -> 수정주가 : 유,무상증자와 액면분할까지 적용한 주가
 
 https://blog.naver.com/PostView.naver?blogId=womynforce&logNo=222989725451&parentCategoryNo=&categoryNo=28&viewDate=&isShowPopularPosts=true&from=search
+https://itchipmunk.tistory.com/490
 (1. 데이터 분석은 도메인 미리 정하지 말고 파이썬으로 여러 도메인 학습하기
  2. 주식시장의 ai 한계는 존재, 다른 분야가 ai가 훨신 실용성 있고 커지기 쉽다.
  3. 하지만 실용성 없어도, 꾸준한 관심이 있다면 계속 규모가 커질수도
