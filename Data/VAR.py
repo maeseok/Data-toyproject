@@ -30,11 +30,44 @@ def showChart(df):
 
     plt.tight_layout()
     plt.show()
+    
+#정상성 분석 함수
+def adf_test(data):
+    data = pd.read_csv(data+".csv")
+    from statsmodels.tsa.stattools import adfuller
+    data=data['close']
+    result = adfuller(data)
+    print(f'원 데이터 ADF Statistic: {result[0]:.3f}')
+    print(f'원 데이터 p-value: {result[1]:.3f}')
+    if(result[1]>0.05):
+        i=1
+        while(result[1]>0.05):
+            diff_1=data.diff(periods=1).iloc[1:]
+            result = adfuller(diff_1)
+            print(f'{i}차 차분 ADF Statistic: {result[0]:.3f}')
+            print(f'{i}차 차분 p-value: {result[1]:.10f}')
+            i+=1
+        print(diff_1)
 
+#그레인저 인과검정
+def granger(df,data,data2):
+    from statsmodels.tsa.stattools import grangercausalitytests
+    df_cols = df.columns
+    maxlag=4
+    print('ks dw')
+    df_outs=grangercausalitytests(df[['KS','DW']],maxlag=maxlag)
+    print(df_outs)
+    print('dw ks')
+    df_outs=grangercausalitytests(df[['DW','KS']],maxlag=maxlag)
+    print(df_outs)
+    
 KS=readData("KS")
 KDW = madeData("DW")
-showChart(KDW)
+adf_test("DW")
+#showChart(KDW)
+#granger(KDW)
 #KSP = madeData("SP")
 #showChart(KSP)
 #KNS = madeData("NS")
 #showChart(KNS)
+
