@@ -10,9 +10,8 @@ plt.style.use('cyberpunk')
 def readData(name):
     return pd.read_csv(name+".csv")
 
-def madeData(name):
-    value=readData(name)
-    temp = pd.DataFrame({'Date':KS['date'],name:value['close'],'KS':KS['close']})
+def madeData(name,df):
+    temp = pd.DataFrame({'Date':KS['date'],name:df['close'],'KS':KS['close']})
     #inplace를 통해 기존의 인덱스(숫자)를 대체
     temp.set_index('Date',inplace=True)
     temp = temp.dropna()
@@ -35,39 +34,44 @@ def showChart(df):
 def adf_test(data):
     data = pd.read_csv(data+".csv")
     from statsmodels.tsa.stattools import adfuller
-    data=data['close']
-    result = adfuller(data)
-    print(f'원 데이터 ADF Statistic: {result[0]:.3f}')
-    print(f'원 데이터 p-value: {result[1]:.3f}')
+    #axis=1은 열을 의미한다.
+    #data = data.drop(['code'],axis=1) 
+    data=data[['date','close']]
+    #로그 변환 - 주가가 큰 폭으로 움직여서
+    data['close']=np.log(data['close'])
+    print(data)
+    result = adfuller(data['close'])
+    #print(f'원 데이터 ADF Statistic: {result[0]:.3f}')
+    #print(f'원 데이터 p-value: {result[1]:.3f}')
     if(result[1]>0.05):
-        i=1
-        while(result[1]>0.05):
-            diff_1=data.diff(periods=1).iloc[1:]
-            result = adfuller(diff_1)
-            print(f'{i}차 차분 ADF Statistic: {result[0]:.3f}')
-            print(f'{i}차 차분 p-value: {result[1]:.10f}')
-            i+=1
-        print(diff_1)
-
+        #차분으로 추세제거
+        data['close']=data['close'].diff(periods=1).iloc[1:]
+        data=data.dropna()
+        result = adfuller(data['close'])
+        #print(f'1차 차분 ADF Statistic: {result[0]:.3f}')
+        #print(f'1차 차분 p-value: {result[1]:.10f}')
+    #변환 후 반환
+    return data
 #그레인저 인과검정
 def granger(df,data,data2):
     from statsmodels.tsa.stattools import grangercausalitytests
     df_cols = df.columns
-    maxlag=4
-    print('ks dw')
-    df_outs=grangercausalitytests(df[['KS','DW']],maxlag=maxlag)
-    print(df_outs)
-    print('dw ks')
-    df_outs=grangercausalitytests(df[['DW','KS']],maxlag=maxlag)
+    maxlag=14
+    #KS->DW
+    df_outs=grangercausalitytests(df[[data,data2]],maxlag=maxlag)
     print(df_outs)
     
-KS=readData("KS")
-KDW = madeData("DW")
-adf_test("DW")
+    #DW->KS
+    df_outs=grangercausalitytests(df[[data2,data]],maxlag=maxlag)
+    print(df_outs)
+    
+KS=adf_test("KS")
+DW=adf_test("DW")
+KDW = madeData("DW",DW)
+granger(KDW,"KS","DW")
 #showChart(KDW)
 #granger(KDW)
 #KSP = madeData("SP")
 #showChart(KSP)
 #KNS = madeData("NS")
 #showChart(KNS)
-
