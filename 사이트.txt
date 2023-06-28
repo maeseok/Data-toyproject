@@ -51,10 +51,37 @@ https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArti
 https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002931416
 -> 코로나19 전후 주식시장 상호의존성 - var 모형 사용
 
-5. VAR, 그래저 인과검정, 공적분 검정으로 선택(0622~)
+5. VAR, 그래인저 인과검정, 공적분 검정으로 선택(0622~)
 https://songseungwon.tistory.com/133
 해당 내용참고 
 -> 수정주가 : 유,무상증자와 액면분할까지 적용한 주가
+
+granger 인과검정 관련 사이트(0622~0627)
+정상성
+https://bluemumin.github.io/adp/2021/03/09/ADP-20%ED%9A%8C-ADP-%EC%8B%A4%EA%B8%B0-python-%ED%86%B5%EA%B3%84%EB%B6%84%EC%84%9D(%EC%8B%9C%EA%B3%84%EC%97%B4-%EC%A0%95%EC%83%81%EC%84%B1-%EA%B2%80%EC%A6%9D)/
+https://sosoeasy.tistory.com/400 -> 차분
+https://today-1.tistory.com/38 -> 결과분석
+https://medium.com/@connect2yh/%EB%8B%A4%EC%A7%9C%EA%B3%A0%EC%A7%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EB%8A%94-%EC%8B%9C%EA%B3%84%EC%97%B4-%EB%B6%84%EC%84%9D-%EC%A0%95%EC%83%81%EC%84%B1%EC%9D%84-%EB%91%98%EB%9F%AC%EC%8B%BC-%EA%B8%B0%EC%B4%88-%EA%B0%9C%EB%85%90-2%ED%8E%B8-e1f62413670c
+로그 변환과 차분
+-> 통계학적 문제는 해결되나 장기적인 관계에 대한 정보는 잃어버림 -> 
+두 비정상 시계열 공적분 관계 있을 시 -> 오차수정모형
+
+-> 27일 granger 검정 전제 조건 만족하기 (0627완)
+
+공적분 검정 관련 사이트 (0628~)
+https://blog.naver.com/PostView.nhn?blogId=yonxman&logNo=220904870137 -> 프로그램
+https://lsjsj92.tistory.com/584 -> 기본개념 및 파이썬
+https://ko.wikipedia.org/wiki/%EA%B3%B5%EC%A0%81%EB%B6%84 -> 개념
+-> 요한슨 검정 사용 (대표본 - 표본이 많아야 사용 가능 아니면 ARDL 이용)
+VAR 모형에 대한 가설검정을 통해 적분계열간 안정적인 장기 균형관계가 존재하는지 점검
+
+-> 두 비정상 시계열 공적분 관계 가지는 지 확인  (즉 전제조건 필요X)
+이후 가지면 오차수정모형으로 장, 단기 파악까지 공적분
+
+
+
+
+
 
 https://blog.naver.com/PostView.naver?blogId=womynforce&logNo=222989725451&parentCategoryNo=&categoryNo=28&viewDate=&isShowPopularPosts=true&from=search
 https://itchipmunk.tistory.com/490
