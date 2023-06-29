@@ -11,7 +11,7 @@ def readData(name):
     return pd.read_csv(name+".csv")
 
 def madeData(name,df):
-    temp = pd.DataFrame({'Date':KS['date'],name:df['close'],'KS':KS['close']})
+    temp = pd.DataFrame({'Date':KS['date'],'KS':KS['close'],name:df['close']})
     #inplace를 통해 기존의 인덱스(숫자)를 대체
     temp.set_index('Date',inplace=True)
     temp = temp.dropna()
@@ -65,10 +65,26 @@ def granger(df,data,data2):
     df_outs=grangercausalitytests(df[[data2,data]],maxlag=maxlag)
     print(df_outs)
     
-KS=adf_test("KS")
-DW=adf_test("DW")
+def cointegration(KDW):
+    from statsmodels.tsa.vector_ar.vecm import coint_johansen
+    out = coint_johansen(KDW,1,1)
+    #공적분 결과값이 해당 유의수준 통계량보다 크면 유의하다.
+    stats = [round(x,2) for x in out.lr1] #공적분 통계량
+    sigs = [round(x,2) for x in out.cvt[:, 1]] #유의수준 0.05 관측치
+    yns = [x>y for x,y in zip(stats,sigs)] # 유의 여부(장기 안정성)
+    dist = np.mean(np.array(stats) - np.array(sigs)) #안정성의 강도
+    print('stats: ',stats) 
+    print('sig-level: ',sigs)
+    print('significant_yn: ',[x>y for x,y in zip(stats,sigs)])
+    print('dist: ', round(dist,2))
+    
+#KS=adf_test("KS")
+#DW=adf_test("DW")
+KS=readData("KS")
+DW=readData("DW")
 KDW = madeData("DW",DW)
-granger(KDW,"KS","DW")
+cointegration(KDW)
+#granger(KDW,"KS","DW")
 #showChart(KDW)
 #granger(KDW)
 #KSP = madeData("SP")
