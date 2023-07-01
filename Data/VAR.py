@@ -39,7 +39,7 @@ def adf_test(data):
     data=data[['date','close']]
     #로그 변환 - 주가가 큰 폭으로 움직여서
     data['close']=np.log(data['close'])
-    print(data)
+    #print(data)
     result = adfuller(data['close'])
     #print(f'원 데이터 ADF Statistic: {result[0]:.3f}')
     #print(f'원 데이터 p-value: {result[1]:.3f}')
@@ -77,13 +77,25 @@ def cointegration(KDW):
     print('sig-level: ',sigs)
     print('significant_yn: ',[x>y for x,y in zip(stats,sigs)])
     print('dist: ', round(dist,2))
+
+def var(df):
+    from statsmodels.tsa.api import VAR
+    from statsmodels.stats.stattools import durbin_watson
+    model = VAR(df)
+    model = model.fit(3)
+    print(model.summary())
+    durbin = pd.DataFrame([model.resid.columns, 
+                           [round(x,2) for x in durbin_watson(model.resid)]]).T
+    durbin = durbin.set_index([0])
     
-#KS=adf_test("KS")
-#DW=adf_test("DW")
-KS=readData("KS")
-DW=readData("DW")
+
+KS=adf_test("KS")
+DW=adf_test("DW")
+#KS=readData("KS")
+#DW=readData("DW")
 KDW = madeData("DW",DW)
-cointegration(KDW)
+var(KDW)
+#cointegration(KDW)
 #granger(KDW,"KS","DW")
 #showChart(KDW)
 #granger(KDW)
