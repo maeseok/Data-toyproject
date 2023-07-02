@@ -78,7 +78,7 @@ def cointegration(KDW):
     print('significant_yn: ',[x>y for x,y in zip(stats,sigs)])
     print('dist: ', round(dist,2))
 
-def var(df):
+def var_model(df):
     from statsmodels.tsa.api import VAR
     from statsmodels.stats.stattools import durbin_watson
     model = VAR(df)
@@ -87,14 +87,20 @@ def var(df):
     durbin = pd.DataFrame([model.resid.columns, 
                            [round(x,2) for x in durbin_watson(model.resid)]]).T
     durbin = durbin.set_index([0])
-    
+
+def vecm_model(df):
+    from statsmodels.tsa.vector_ar import vecm 
+    vmodel = vecm.VECM(endog = df, k_ar_diff = 9, coint_rank = 3, deterministic = 'ci')
+    model_fit = vmodel.fit()
+    print(model_fit.summary())
+    model_fit.plot_forecast(steps=10)
 
 KS=adf_test("KS")
 DW=adf_test("DW")
 #KS=readData("KS")
 #DW=readData("DW")
 KDW = madeData("DW",DW)
-var(KDW)
+vecm_model(KDW)
 #cointegration(KDW)
 #granger(KDW,"KS","DW")
 #showChart(KDW)
